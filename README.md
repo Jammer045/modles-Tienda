@@ -10,3 +10,5 @@ se instala:
 
 npm install express mongoose dotenv
 npm install --save-dev nodemon
+npm i cors
+npm i morgan
