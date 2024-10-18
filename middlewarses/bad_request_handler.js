@@ -8,7 +8,7 @@ const badRequestHandler = (req, res, next) => {
     return res.status(400).json({
       success: false,
       message: error.message,
-      stack: process.env.NODE_ENV === 'development' ? stackTrace : undefined,
+      stack: process.env.NODE_ENV === 'development' ? stackTrace : error.stack,
     });
   }
   next();
