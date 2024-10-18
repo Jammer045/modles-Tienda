@@ -13,7 +13,7 @@ export const multiple_choice_handler = (req, res, next) => {
 
             const electronicProducts = products.filter(product => product.electronics === true);
 
-            if (electronicProducts.length > 0) {
+            if (electronicProducts.length > 1) {
                 const response = {
                     message: "300 Multiple Choices finded",
                     count: electronicProducts.length,
