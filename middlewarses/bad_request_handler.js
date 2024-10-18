@@ -1,13 +1,11 @@
-import { nameStore } from "../controllers/stores/read.js";
-
 const badRequestHandler = (req, res, next) => {
-  if (nameStore !== req.params.name) {
+  if (!req.body || !req.body.name) {
     return res.status(400).json({
       success: false,
-      message: "Request body could not be read properly.", 
+      message: "Required data (name) is missing from the request body.",
     });
   }
-  next(); 
+  next();
 };
 
 export default badRequestHandler;
