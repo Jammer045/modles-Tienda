@@ -36,4 +36,31 @@ const salaryEmployee = async (req, res) => {
     }
 };
 
-export { allEmployees, nameEmployee, rolEmployee, salaryEmployee };
+const employeeByName = async (req, res) => {
+    try {
+        const employee = await Employee.find({ name: req.params.name });
+        return res.status(200).json(employee);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+const employeeByRol = async (req, res) => {
+    try {
+        const employee = await Employee.find({ rol: req.params.rol });
+        return res.status(200).json(employee);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+const employeeBylastName = async (req, res) => {
+    try {
+        const employee = await Employee.find({ lastName: req.params.lastName });
+        return res.status(200).json(employee);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+export { allEmployees, nameEmployee, rolEmployee, salaryEmployee, employeeByName, employeeByRol, employeeBylastName };
