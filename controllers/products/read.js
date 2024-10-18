@@ -36,4 +36,31 @@ const typeProduct = async (req, res) => {
     }
 };
 
-export { allProducts, nameProduct, markProduct, typeProduct };
+const productById = async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id);
+        return res.status(200).json(product);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+const productByName = async (req, res) => {
+    try {
+        const product = await Product.find({ name: req.params.name });
+        return res.status(200).json(product);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+const productByType = async (req, res) => {
+    try {
+        const product = await Product.find({ type: req.params.type });
+        return res.status(200).json(product);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+export { allProducts, nameProduct, markProduct, typeProduct, productById, productByName, productByType };

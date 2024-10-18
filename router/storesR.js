@@ -1,10 +1,15 @@
 import { Router } from "express";
-import { allStores, addressStore, nameStore } from "../controllers/stores/read.js";
+import { allStores, addressStore, nameStore, storeName, storeById, storeByAddress } from "../controllers/stores/read.js";
+import createStore from "../controllers/stores/create.js";
 
 const storesRouter = Router();
 
 storesRouter.get("/all", allStores);
 storesRouter.get("/address", addressStore);
 storesRouter.get("/name", nameStore);
+storesRouter.get("/name/:name", storeName);
+storesRouter.get("/id/:id", storeById);
+storesRouter.get("/address/:address", storeByAddress);
+storesRouter.post("/create", createStore);
 
 export default storesRouter;

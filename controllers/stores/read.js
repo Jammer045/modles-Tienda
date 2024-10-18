@@ -27,4 +27,31 @@ const nameStore = async (req, res) => {
     }
 };
 
-export { allStores, addressStore, nameStore };
+const storeName = async (req, res) => {
+    try {
+        const store = await Store.find({ name: req.params.name });
+        return res.status(200).json(store);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+const storeById = async (req, res) => {
+    try {
+        const store = await Store.findById(req.params.id);
+        return res.status(200).json(store);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+const storeByAddress = async (req, res) => {
+    try {
+        const store = await Store.find({ address: req.params.address });
+        return res.status(200).json(store);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+export { allStores, addressStore, nameStore, storeName, storeById, storeByAddress };
