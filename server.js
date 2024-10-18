@@ -6,7 +6,7 @@ import morgan from 'morgan';
 import indexRouter from './router/index.js'
 import not_found_handler from './middlewarses/not_found_handler.js';
 import errorServerHandler from './middlewarses/error_server_handler.js';
-import badApplicationHandler from './middlewarses/invalid_application_handler.js';
+import badRequestHandler from './middlewarses/bad_request_handler.js';
 import badgeGetaway from './middlewarses/bad_getaway_handler.js';
 
 const server= express ()
@@ -20,7 +20,7 @@ server.use(morgan('dev'))                         //ayuda a ver las peticiones q
 server.use('/shops', indexRouter)                 //hace uso del enrutador router
 server.use(not_found_handler)                      //hace uso de un middleware cuando no se encuentra la peticion
 server.use(errorServerHandler)                      //hace uso de un middleware cuando hay un error de servidor
-server.use(badApplicationHandler)                   //hace uso de un middleware cuando la peticion no es valida
+server.use(badRequestHandler)                       //hace uso de un middleware cuando la peticion no es valida
 server.use(badgeGetaway)                           //hace uso de un middleware cuando la peticion no puede ser procesada
 
 server.listen(PORT, Ready)
