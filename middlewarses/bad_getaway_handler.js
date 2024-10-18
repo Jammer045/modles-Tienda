@@ -1,9 +1,12 @@
-const badgeGetaway = (req, res, next) => {
-
-    return res.status(420).json({
-        success: false,
-        message: "La petición no puede ser procesada en este momento, favor de intentar mas tarde.",
-    });
+const errorResponse = {
+    success: false,
+    error: {
+        message: 'The server was unable to complete your request. Please try again later.'
+    }
 };
 
-export default badgeGetaway
+const badgeGetaway = (req, res, next) => {
+    return res.status(502).json(errorResponse);
+};
+
+export default badgeGetaway;

@@ -1,8 +1,8 @@
-export const handle_electronic_products = (req, res, next) => {
+export const multiple_choice_handler = (req, res, next) => {
     const originalSend = res.send;
 
     res.send = function(data) {
-        if (res.statusCode === 300 && data) {
+        if (res.status === 300 && data) {
             let products;
             
             try {
@@ -15,7 +15,7 @@ export const handle_electronic_products = (req, res, next) => {
 
             if (electronicProducts.length > 0) {
                 const response = {
-                    message: "Múltiples productos electrónicos encontrados",
+                    message: "300 Multiple Choices finded",
                     count: electronicProducts.length,
                     products: electronicProducts
                 };
